@@ -15,12 +15,17 @@
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
     "@angular/core": "~10.1.0",
+    "@angular/fire": "^6.0.3",
     "@angular/forms": "~10.1.0",
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
+    "firebase": "^7.21.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "materialize-css": "^1.0.0",
     "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
+    "tslib": "^2.0.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
