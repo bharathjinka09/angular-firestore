@@ -15,10 +15,11 @@ export class ItemService {
   private itemsCollection: AngularFirestoreCollection<Item>;
 
   items: Observable<Item[]>;
+  private itemDoc: AngularFirestoreDocument<Item>;
 
   constructor(private afs: AngularFirestore) {
     this.itemsCollection = this.afs.collection<Item>('items', (ref) =>
-      ref.orderBy('title', 'desc')
+      ref.orderBy('title', 'asc')
     );
 
     this.items = this.itemsCollection.snapshotChanges().pipe(
@@ -38,5 +39,10 @@ export class ItemService {
 
   addItem(item: Item) {
     this.itemsCollection.add(item);
+  }
+
+  deleteItem(item: Item) {
+    this.itemDoc = this.afs.doc(`items/${item.id}`);
+    this.itemDoc.delete();
   }
 }

@@ -1,6 +1,10 @@
 <div *ngIf="items?.length > 0; else noItems">
   <ul *ngFor="let item of items" class="card">
-    <li style="list-style: none" class="card-body">
+    <li
+      (dblclick)="deleteItem($event, item)"
+      style="list-style: none"
+      class="card-body"
+    >
       <strong>
         {{ item.title }}
       </strong>
