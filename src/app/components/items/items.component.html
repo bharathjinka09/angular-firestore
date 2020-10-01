@@ -1,14 +1,54 @@
 <div *ngIf="items?.length > 0; else noItems">
   <ul *ngFor="let item of items" class="card">
-    <li
-      (dblclick)="deleteItem($event, item)"
-      style="list-style: none"
-      class="card-body"
-    >
+    <li style="list-style: none" class="card-body">
       <strong>
         {{ item.title }}
       </strong>
       {{ item.description }}
+      <a href="#" class="float-right">
+        <i (click)="editItem($event, item)" class="fa fa-pencil"></i>
+        <i
+          *ngIf="editState && itemToEdit.id == item.id"
+          (click)="clearState()"
+          class="fa fa-compress"
+        ></i>
+      </a>
+
+      <div *ngIf="editState && itemToEdit.id == item.id">
+        <form (ngSubmit)="updateItem(item)">
+          <div class="row">
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Add Title"
+                [(ngModel)]="item.title"
+                name="title"
+                required
+              />
+            </div>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Add Description"
+                [(ngModel)]="item.description"
+                name="description"
+                required
+              />
+            </div>
+            <br />
+            <br />
+            <input type="submit" value="Update" class="btn btn-info ml-3" />
+            <button
+              (click)="deleteItem($event, item)"
+              class="btn btn-danger ml-3"
+            >
+              Delete
+            </button>
+          </div>
+        </form>
+      </div>
     </li>
   </ul>
 </div>
